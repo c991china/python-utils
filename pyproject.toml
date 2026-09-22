@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-utils-c991china"
+# The distribution name is ugly on purpose: `python-utils` is taken on PyPI and
+# I'm not going to pretend otherwise. The import name is `python_utils`.
+version = "0.4.2"
+description = "Small stdlib-only helpers for fs, text, time and one HTTP GET."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "c991china" }]
+keywords = ["utilities", "stdlib", "helpers"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+# No runtime dependencies. That's the whole point of the package.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+
+[project.scripts]
+python-utils = "python_utils.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/c991china/python-utils"
+Issues = "https://github.com/c991china/python-utils/issues"
+
+[tool.setuptools]
+packages = ["python_utils"]
+
+[tool.pytest.ini_options]
+# Needed because there's no src/ layout: pytest otherwise only puts the tests/
+# directory on sys.path and `import python_utils` fails. Requires pytest >= 7.
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["python_utils"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if TYPE_CHECKING:"]
