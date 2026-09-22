@@ -1,0 +1,44 @@
+# Byte-compiled / cached
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+
+# Virtualenvs - named a few ways because I keep switching tools
+.venv/
+venv/
+env/
+ENV/
+
+# Type checkers
+.mypy_cache/
+.dmypy.json
+.ruff_cache/
+.pytype/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local scratch. I keep a scratch/ dir for one-off scripts; never commit it.
+scratch/
+*.local.json
+.env
